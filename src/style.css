@@ -1,0 +1,44 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #222;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #eee;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  border-radius: 8px;
+}
+
+#button-bar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+button {
+  position: static; /* Remove absolute positioning */
+  padding: 10px 24px;
+  background: #444;
+  color: #eee;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  background: #666;
+  color: #fff;
+}
+
+button.active {
+  background: #bbb;
+  color: #222;
+}

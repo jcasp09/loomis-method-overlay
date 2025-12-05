@@ -1,0 +1,13 @@
+{
+  "name": "loomis_overlay",
+  "version": "1.0.0",
+  "description": "Facial form drawing application using ml5 and p5.js",
+  "license": "ISC",
+  "author": "Jason Casper",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "vite": "^7.2.4"
+  }
+}
