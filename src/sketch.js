@@ -12,9 +12,9 @@ function gotFaces(results) {
   faces = results;
 }
 
-function newButton(name, f) {
+function newButton(name, f, parent) {
   let btn = createButton(name);
-  btn.parent("button-bar"); // Add button to the container
+  btn.parent(parent);
 
   let btnObj = {
     active: false,
@@ -38,7 +38,7 @@ function toggleControl(face) {
 }
 
 function setup() {
-  createCanvas(850, 326).parent(document.body);
+  createCanvas(850, 326).parent(document.getElementById("canvas"));
   video = createCapture(VIDEO, { flipped: true });
   video.hide();
 
@@ -48,11 +48,13 @@ function setup() {
   overlay = createGraphics(width / 2, height);
   overlay.clear();
 
-  // Buttons (no x/y needed)
-  buttons.push(newButton("Face Mesh", showFaceMesh));
-  buttons.push(newButton("Facial Thirds", showFacialThirds));
-  buttons.push(newButton("Structure", showStructure));
-  buttons.push(newButton("Features", showFeatures));
+  // Buttons
+  buttons.push(newButton("Face Mesh", showFaceMesh, "structure"));
+  buttons.push(newButton("Planes", showPlanes, "structure"));
+  buttons.push(newButton("Facial Thirds", showFacialThirds, "structure"));
+  buttons.push(newButton("Orbits/Eyes", showOrbitsEyes, "features"));
+  buttons.push(newButton("Nose", showNose, "features"));
+  buttons.push(newButton("Mouth", showMouth, "features"));
 }
 
 function draw() {

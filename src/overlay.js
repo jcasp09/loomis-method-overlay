@@ -12,7 +12,7 @@ function showFacialThirds(face) {
   show3rd3(face);
 }
 
-function showStructure(face) {
+function showPlanes(face) {
   showCenterLine(face);
   showBrow(face);
   showOutline(face);
@@ -22,9 +22,14 @@ function showStructure(face) {
 }
 
 function showFeatures(face) {
-  showEyeSockets(face);
+  showOrbits(face);
   showEyes(face);
   showNose(face);
   showMouth(face);
   //showPhiltrum(face)
+}
+
+function showOrbitsEyes(face) {
+  showOrbits(face);
+  showEyes(face);
 }

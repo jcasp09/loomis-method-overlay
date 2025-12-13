@@ -117,7 +117,7 @@ function showCenterLine(face) {
   );
 }
 
-function showEyeSockets(face) {
+function showOrbits(face) {
   connect(
     [
       417, 285, 442, 443, 444, 445, 342, 446, 261, 448, 449, 450, 451, 357, 465,
