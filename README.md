@@ -4,4 +4,4 @@ An application to aid artists in drawing the face. Built on top of the ml5.js Fa
 
 ### Example visual usage
 
-<img src="assets/loomis_ex.png" width="400">
+<img src="assets/loomis_ex.png" width="600">
