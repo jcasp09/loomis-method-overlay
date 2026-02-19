@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loomis Method Overlay</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
     <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/src/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Chokokutai&family=Rubik+Pixels&display=swap" rel="stylesheet">    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <main>
-      <h1>Loomis Method Overlay</h1>
-    </main>
-        <script src="/src/segments.js"></script>
-        <script src="/src/overlay.js"></script>
-        <script src="/src/sketch.js"></script>
+    <header class="header">
+      <h1 class="title">Loomis Method Overlay</h1>
+      <p class="tagline">Use face structure guides to practice drawing from life. Toggle segments below, then freeze a pose to use as a reference.</p>
+    </header>
 
-        <div id="display">
-          <div id="canvas"></div>
-          <div id="btnrow1">
-            Structure:
-            <div id="structure"></div>
+    <main class="main">
+      <section class="view-section">
+        <div class="view-labels">
+          <div class="view-label">
+            <h2 class="panel-title">Structure only</h2>
+            <p class="panel-desc">Guide lines without camera</p>
           </div>
-          <div id="btnrow2">
-            Features:
-            <div id="features"></div>
+          <div class="view-label">
+            <h2 class="panel-title">Live camera</h2>
+            <p class="panel-desc">Overlay on your face</p>
           </div>
         </div>
+        <div id="canvas" class="canvas-wrap"></div>
+      </section>
+
+      <section class="controls-section">
+        <div class="control-group">
+          <h3 class="control-label">Structure</h3>
+          <div id="structure" class="button-group"></div>
+        </div>
+        <div class="control-group">
+          <h3 class="control-label">Features</h3>
+          <div id="features" class="button-group"></div>
+        </div>
+      </section>
+
+      <section class="freeze-section">
+        <div class="freeze-header">
+          <h3 class="freeze-title">Reference freeze</h3>
+          <p class="freeze-desc">Capture the current pose and visible segments as a still reference so you can draw from it like a photo.</p>
+          <div class="freeze-actions">
+            <button type="button" id="freeze-btn" class="btn btn--freeze">Freeze frame</button>
+            <button type="button" id="clear-freeze-btn" class="btn btn--secondary">Clear</button>
+          </div>
+        </div>
+        <div id="freeze-display" class="freeze-display">
+          <p class="freeze-placeholder" id="freeze-placeholder">No freeze yet. Click “Freeze frame” while viewing the live camera.</p>
+          <div id="freeze-canvas-wrap" class="freeze-canvas-wrap hidden">
+            <img id="freeze-img" class="freeze-img" alt="Frozen reference" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/src/segments.js"></script>
+    <script src="/src/overlay.js"></script>
+    <script src="/src/sketch.js"></script>
   </body>
 </html>

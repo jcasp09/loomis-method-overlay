@@ -1,0 +1,5 @@
+This is an application to aid artists in drawing the face. 
+It is built on top of the ml5.js FaceMesh model, and uses the p5.js library.
+Right now, the camera overlays lines on the user's face, using the camera, and you are able to toggle on and off certain facial segments to be visible.
+My goal is to add a feature that essentially takes a freezeframe of the current pose and line segment structure.
+This is so that the artist can reference themselves as if it were a photo, so that they can practice drawing certain facial poses using their own face.

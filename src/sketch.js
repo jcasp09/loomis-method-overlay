@@ -3,6 +3,7 @@ let faceMesh;
 let faces = [];
 let overlay;
 let buttons = [];
+let captureRequested = false;
 
 function preload() {
   faceMesh = ml5.faceMesh({ maxFaces: 1, flipped: true });
@@ -55,10 +56,24 @@ function setup() {
   buttons.push(newButton("Orbits/Eyes", showOrbitsEyes, "features"));
   buttons.push(newButton("Nose", showNose, "features"));
   buttons.push(newButton("Mouth", showMouth, "features"));
+
+  // Freeze frame
+  document.getElementById("freeze-btn").addEventListener("click", () => {
+    captureRequested = true;
+  });
+  document.getElementById("clear-freeze-btn").addEventListener("click", () => {
+    const placeholder = document.getElementById("freeze-placeholder");
+    const wrap = document.getElementById("freeze-canvas-wrap");
+    const img = document.getElementById("freeze-img");
+    img.src = "";
+    img.removeAttribute("src");
+    placeholder.classList.remove("hidden");
+    wrap.classList.add("hidden");
+  });
 }
 
 function draw() {
-  background(125);
+  background(42, 43, 46); // matches surface area behind canvas
   overlay.clear();
   let scaleX = width / 2 / video.width;
   let scaleY = height / video.height;
@@ -81,4 +96,28 @@ function draw() {
   // Overlay on both halfs
   image(overlay, 0, 0);
   image(overlay, width / 2, 0);
+
+  // Capture freeze frame (right half = live camera + overlay)
+  if (captureRequested) {
+    captureRequested = false;
+    const el = document.querySelector("#canvas canvas");
+    if (el) {
+      const ctx = el.getContext("2d");
+      const cw = el.width;
+      const ch = el.height;
+      const w = Math.floor(cw / 2);
+      const imageData = ctx.getImageData(w, 0, w, ch);
+      const temp = document.createElement("canvas");
+      temp.width = w;
+      temp.height = ch;
+      temp.getContext("2d").putImageData(imageData, 0, 0);
+      const dataUrl = temp.toDataURL("image/png");
+      const img = document.getElementById("freeze-img");
+      const placeholder = document.getElementById("freeze-placeholder");
+      const wrap = document.getElementById("freeze-canvas-wrap");
+      img.src = dataUrl;
+      placeholder.classList.add("hidden");
+      wrap.classList.remove("hidden");
+    }
+  }
 }
