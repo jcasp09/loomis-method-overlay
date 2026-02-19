@@ -1,3 +1,4 @@
 node_modules/
 .vscode/
 .cursor_context.txt
+.DS_Store
